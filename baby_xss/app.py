@@ -8,3 +8,8 @@ app = Flask(__name__)
 def main():
     value = request.args.get("value", None)
     return render_template("app.html", value=value)
+
+@app.route("/bot")
+def bot_control():
+    value = request.args.get("value", None)
+    return render_template("bot.html", value=value)

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Baby XSS </title>
+        <title> Gullible Bot </title>
     </head>
     <body style="">
         <div style="text-align: center;">
-            <form action="/" method="get">
+            <form action="/bot" method="get">
                 <input type="text" name="value" id="value">
-                <button type="submit"> Scream </button>
+                <button type="submit"> Visit </button>
             </form>
-            <a href="/bot"> Take me to the bot</a>
+            <a href="/"> Take me to the scream form </a>
             {% if value %}
-                <h2> {{ value|safe }} !!!! </h2>
+                <h2> I'll be visiting {{ value }} shortly  </h2>
             {% endif %}
         </div>
     </body>
