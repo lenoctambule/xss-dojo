@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Baby XSS </title>
+    </head>
+    <body style="">
+        <div style="text-align: center;">
+            <form action="/" method="get">
+                <input type="text" name="value" id="value">
+                <button type="submit"> Talk to me</button>
+            </form>
+            {% if value %}
+                <h2> {{ value|safe }} !!!! </h2>
+            {% endif %}
+        </div>
+    </body>
+</html>
