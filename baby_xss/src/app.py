@@ -4,7 +4,6 @@ from flask import Flask,\
 import threading
 from selenium import webdriver
 import time
-from urllib.parse import unquote_plus, unquote, quote
 from requests.utils import requote_uri
 
 SECRET_COOKIE   = {'name' : 'secret', 'value' : 'secret squirrel\'s cookie'}
