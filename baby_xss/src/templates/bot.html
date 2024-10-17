@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Gullible Bot </title>
+        <script>
+            $("input").keydown(function(e) {
+            var oldvalue=$(this).val();
+            var field=this;
+            setTimeout(function () {
+                if(field.value.indexOf('http://') !== 0) {
+                    $(field).val(oldvalue);
+                } 
+            }, 1);
+});
+        </script>
+    </head>
+    <body>
+        <div style="text-align: center;">
+            <form action="/bot" method="get">
+                <input type="text" name="value" id="value" value="http://localhost:5000/">
+                <button type="submit" value=""> Visit </button>
+            </form>
+            <a href="/"> Take me to the scream form </a>
+            {% if value %}
+                <h2> I'll be visiting {{ value }} shortly  </h2>
+            {% endif %}
+        </div>
+    </body>
+</html>

@@ -4,8 +4,11 @@ from flask import Flask,\
 import threading
 from selenium import webdriver
 import time
+from urllib.parse import unquote_plus, unquote, quote
+from requests.utils import requote_uri
 
-SECRET_COOKIE   ={'name' : 'secret', 'value' : 'secret squirrel\'s cookie'}
+SECRET_COOKIE   = {'name' : 'secret', 'value' : 'secret squirrel\'s cookie'}
+BASE_URL        = 'http://localhost:5000/'
 links           = list()
 lock            = threading.Lock()
 
@@ -21,6 +24,7 @@ def bot_routine(driver : webdriver.Firefox):
                 driver.get(target)
                 driver.add_cookie(SECRET_COOKIE)
                 driver.refresh()
+                print(f'Visited {target}')
             except :
                 pass
             continue
@@ -44,7 +48,11 @@ def main():
 def bot_control():
     global lock
     value = request.args.get("value", None)
-    lock.acquire()
-    links.append(value)
-    lock.release()
+    if value :
+        if not value.startswith(BASE_URL) :
+            return render_template("bot.html")
+        value = requote_uri(value)
+        lock.acquire()
+        links.append(value)
+        lock.release()
     return render_template("bot.html", value=value)
