@@ -1,17 +1,18 @@
-networks:
-  network:
-    driver: bridge
 
-services:
-  bot:
+networks :
+  network :
+    driver : bridge
+
+services :
+  bot :
     container_name : bot
     build : ./bot
     ports :
-      - 5001:
+      - 5001:5001
     networks :
       - network
 
-  vulnerable_app:
+  vulnerable_app :
     container_name : vulnerable_app
     build : ./vulnerable_app
     ports :

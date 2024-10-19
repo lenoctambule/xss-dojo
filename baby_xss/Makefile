@@ -1,0 +1,19 @@
+CMPS_PATH	=
+
+all : build run
+
+build :
+	docker compose $(CMPS_PATH) build
+
+run : 
+	docker compose $(CMPS_PATH) up -d
+
+stop :
+	docker compose $(CMPS_PATH) stop
+
+fclean :
+	docker compose $(CMPS_PATH) down -v
+
+re: fclean build run
+
+.PHONY : all build run stop fclean re

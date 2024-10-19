@@ -47,3 +47,7 @@ def bot_control():
         links.append(value)
         lock.release()
     return render_template("bot.html", value=value)
+
+if __name__ == '__main__':
+    port = int(5000)
+    app.run(host='0.0.0.0', port=port)
