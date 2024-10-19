@@ -28,7 +28,6 @@ SECRET_COOKIE   = {'name' : 'secret', 'value' : 'secret squirrel\'s cookie'}
 BASE_URL        = 'http://localhost:5000/'
 links           = list()
 lock            = threading.Lock()
-
 app             = Flask(__name__)
 options         = webdriver.FirefoxOptions()
 options.add_argument('--headless')
