@@ -1,4 +1,4 @@
-CMPS_PATH	=
+CMPS_PATH	= -f ./docker-compose.yml
 
 all : build run
 
