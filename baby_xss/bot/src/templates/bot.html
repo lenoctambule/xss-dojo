@@ -17,10 +17,10 @@
     <body>
         <div style="text-align: center;">
             <form action="/" method="get">
-                <input type="text" name="value" id="value" value="http://localhost:5000/">
+                <input type="text" name="value" id="value" value="http://vulnerable_app:5000/">
                 <button type="submit" value=""> Visit </button>
             </form>
-            <a href="/"> Take me to the scream form </a>
+            <a href="http://localhost:5000/"> Take me to the scream form </a>
             {% if value %}
                 <h2> I'll be visiting {{ value }} shortly  </h2>
             {% endif %}

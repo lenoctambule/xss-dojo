@@ -25,7 +25,7 @@ def bot_routine(driver : webdriver.Firefox):
         time.sleep(0.5)
 
 SECRET_COOKIE   = {'name' : 'secret', 'value' : 'secret squirrel\'s cookie'}
-BASE_URL        = 'http://localhost:5000/'
+BASE_URL        = 'http://vulnerable_app:5000/'
 links           = list()
 lock            = threading.Lock()
 app             = Flask(__name__)
@@ -42,7 +42,7 @@ def bot_control():
     if value :
         if not value.startswith(BASE_URL) :
             return render_template("bot.html")
-        value = requote_uri(value)
+        # value = requote_uri(value)
         lock.acquire()
         links.append(value)
         lock.release()
