@@ -39,9 +39,8 @@ bot_thread.start()
 def bot_control():
     global lock
     value = request.args.get("value", None)
+    value = BASE_URL + value
     if value :
-        if not value.startswith(BASE_URL) :
-            return render_template("bot.html")
         # value = requote_uri(value)
         lock.acquire()
         links.append(value)
