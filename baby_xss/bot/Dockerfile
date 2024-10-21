@@ -1,9 +1,8 @@
 FROM alpine:3.20
 
 RUN apk update
-RUN apk add python firefox-esr wget py-pip
-RUN pip install --no-cache-dir -r ./src/requirements.txt
+RUN apk add python3 firefox wget py-pip
+COPY ./src /src
+RUN pip install --no-cache-dir -r /src/requirements.txt --break-system-packages
 
-COPY ./src /
-
-ENTRYPOINT ["python", "./src/app.py"]
+ENTRYPOINT ["python", "/src/app.py"]

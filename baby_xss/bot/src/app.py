@@ -35,7 +35,7 @@ driver          = webdriver.Firefox(options=options)
 bot_thread      = threading.Thread(target=bot_routine, args=[driver])
 bot_thread.start()
 
-@app.route("/bot")
+@app.route("/")
 def bot_control():
     global lock
     value = request.args.get("value", None)
@@ -49,5 +49,5 @@ def bot_control():
     return render_template("bot.html", value=value)
 
 if __name__ == '__main__':
-    port = int(5000)
+    port = int(5001)
     app.run(host='0.0.0.0', port=port)
