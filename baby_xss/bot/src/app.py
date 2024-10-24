@@ -9,6 +9,8 @@ from requests.utils import requote_uri
 def bot_routine(driver : webdriver.Firefox):
     global links
     global lock
+    driver.get(BASE_URL)
+    driver.add_cookie(SECRET_COOKIE)
     while True :
         lock.acquire()
         if len(links) != 0 :
@@ -16,8 +18,6 @@ def bot_routine(driver : webdriver.Firefox):
             lock.release()
             try:
                 driver.get(target)
-                driver.add_cookie(SECRET_COOKIE)
-                driver.refresh()
             except :
                 pass
             continue
